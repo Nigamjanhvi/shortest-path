@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VITS Satna - Campus Navigation & Information</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-university"></i> VITS Satna
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active" onclick="switchTab('home')">Home</a></li>
+                <li><a href="#navigation" class="nav-link" onclick="switchTab('navigation')">Navigator</a></li>
+                <li><a href="#about" class="nav-link" onclick="switchTab('about')">About</a></li>
+                <li><a href="#facilities" class="nav-link" onclick="switchTab('facilities')">Facilities</a></li>
+                <li><a href="#contact" class="nav-link" onclick="switchTab('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- HOME TAB -->
+        <section id="home-tab" class="tab-content active">
+            <header class="hero-header">
+                <div class="hero-content hero-highlight">
+                    <h1>Welcome to VITS, Satna</h1>
+                    <p class="hero-title">Vindhya Institute of Technology and Science</p>
+                    <p class="hero-subtitle">Located in Satna, Madhya Pradesh - Your Gateway to Excellence in Engineering & Technology</p>
+                </div>
+            </header>
+
+            <div class="welcome-section">
+                <div class="welcome-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Quality Education</h3>
+                    <p>Providing world-class engineering and technology education</p>
+                </div>
+                <div class="welcome-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Modern Infrastructure</h3>
+                    <p>State-of-the-art facilities and laboratories</p>
+                </div>
+                <div class="welcome-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Expert Faculty</h3>
+                    <p>Experienced educators committed to student success</p>
+                </div>
+                <div class="welcome-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Career Growth</h3>
+                    <p>100% placement assistance and internship opportunities</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NAVIGATION TAB -->
+        <section id="navigation-tab" class="tab-content">
+            <div class="nav-header">
+                <h2>🗺️ Campus Navigation System</h2>
+                <p>Find the shortest path between any two locations on campus</p>
+            </div>
+
+            <div class="content-wrapper">
+            <div class="map-section">
+                <h2>Campus Map</h2>
+                <div class="map-container">
+                    <img src="WhatsApp Image 2025-12-19 at 11.29.45.jpeg" alt="College Campus Map" class="campus-map">
+                </div>
+            </div>
+
+            <div class="finder-section">
+                <h2>Shortest Path Finder</h2>
+                
+                <div class="form-group">
+                    <label for="startLocation">Start Location:</label>
+                    <select id="startLocation">
+                        <option value="">-- Select Starting Point --</option>
+                        <option value="VIMS">VIMS</option>
+                        <option value="Hostel">Hostel</option>
+                        <option value="Exam center">Exam Center</option>
+                        <option value="Canteen">Canteen</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Parking 2">Parking 2</option>
+                        <option value="Parking 1">Parking 1</option>
+                        <option value="Gate 2">Gate 2</option>
+                        <option value="Gate 1">Gate 1</option>
+                        <option value="Library/A Block/B Block">Library/A Block/B Block</option>
+                        <option value="Big Audi">Big Audi</option>
+                        <option value="Stationery">Stationery</option>
+                        <option value="Admission block">Admission Block</option>
+                        <option value="VCP">VCP</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="endLocation">End Location:</label>
+                    <select id="endLocation">
+                        <option value="">-- Select Destination --</option>
+                        <option value="VIMS">VIMS</option>
+                        <option value="Hostel">Hostel</option>
+                        <option value="Exam center">Exam Center</option>
+                        <option value="Canteen">Canteen</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Parking 2">Parking 2</option>
+                        <option value="Parking 1">Parking 1</option>
+                        <option value="Gate 2">Gate 2</option>
+                        <option value="Gate 1">Gate 1</option>
+                        <option value="Library/A Block/B Block">Library/A Block/B Block</option>
+                        <option value="Big Audi">Big Audi</option>
+                        <option value="Stationery">Stationery</option>
+                        <option value="Admission block">Admission Block</option>
+                        <option value="VCP">VCP</option>
+                    </select>
+                </div>
+
+                <button id="findPathBtn" onclick="findShortestPath()">Find Shortest Path</button>
+
+                <div id="resultsContainer" class="results-hidden">
+                    <h3>Results</h3>
+                    <div id="pathInfo"></div>
+                    <div id="distanceInfo"></div>
+                    <div id="routeSteps"></div>
+                </div>
+            </div>
+            </div>
+
+            <div class="info-section">
+                <h2>📍 All Locations on Campus</h2>
+                <div class="locations-grid">
+                <div class="location-card">
+                    <strong>VIMS</strong>
+                </div>
+                <div class="location-card">
+                    <strong>Hostel</strong>
+                </div>
+                <div class="location-card">
+                    <strong>Exam Center</strong>
+                </div>
+                <div class="location-card">
+                    <strong>Canteen</strong>
+                </div>
+                <div class="location-card">
+                    <strong>Workshop</strong>
+                </div>
+                <div class="location-card">
+                    <strong>Parking 1</strong>
+                </div>
+                <div class="location-card">
+                    <strong>Parking 2</strong>
+                </div>
+                <div class="location-card">
+                    <strong>Gate 1</strong>
+                </div>
+                <div class="location-card">
+                    <strong>Gate 2</strong>
+                </div>
+                <div class="location-card">
+                    <strong>Library/A Block/B Block</strong>
+                </div>
+                <div class="location-card">
+                    <strong>Big Audi</strong>
+                </div>
+                <div class="location-card">
+                    <strong>Stationery</strong>
+                </div>
+                <div class="location-card">
+                    <strong>Admission Block</strong>
+                </div>
+                <div class="location-card">
+                    <strong>VCP</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT TAB -->
+        <section id="about-tab" class="tab-content">        
+            <div class="about-header">
+                <h2>About VITS, Satna</h2>
+            </div>
+
+            <div class="about-content">
+                <div class="about-section">
+                    <h1 style="font-size: 2.2em; color: #333; margin-bottom: 10px;">The Most Trusted Group of Vindhya Region</h1>
+                    <h3 style="font-size: 1.4em; color: #ffc0cb; margin-bottom: 25px;">More than 23 Years of Academic Experience That You Can Trust</h3>
+                    <p>With the aim to introduce and promote higher education in Vindhya region of Madhya Pradesh, DPR Charitable Trust came into existence in 2001. In 2002, it established the first private engineering institute of the region in Satna. Over the years, various new courses were added to meet the rising aspirations of the youth. Presently, 6 institutions of higher education and a CBSE-affiliated school are successfully serving society under the umbrella of DPR Charitable Trust.</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h4>👨‍🏫 Experienced Faculty & Professional Staff</h4>
+                    </div>
+                    <div class="about-card">
+                        <h4>🎓 Quality Education Center</h4>
+                    </div>
+                    <div class="about-card">
+                        <h4>✨ Excellence Academic Culture</h4>
+                    </div>
+                    <div class="about-card">
+                        <h4>🌳 Lush Green Campus</h4>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h3>🏆 Our Track Record</h3>
+                    <p>In our journey, we have produced several state toppers. Our distinguished alumni are placed across the globe in various multinational corporates and serve in government organizations at various levels. We maintain a strong industry-institute interface that helps in training and placement activities for our students.</p>
+                </div>
+
+                <div class="about-section">
+                    <h3>🏢 Campus Infrastructure</h3>
+                    <p>The lush green campus is spread over 25 acres with 5 Lac Sq. Ft. of built-up area. It features a Student Activity Centre with indoor sports facilities, a stadium for outdoor sports, an air-conditioned auditorium seating 250 students, an auditorium with 800-seat capacity, and a boys' hostel accommodating 200 students. All institutes have modern state-of-the-art infrastructure and well-equipped laboratories.</p>
+                </div>
+
+                <div class="about-section">
+                    <h3>🤝 Social Responsibility & Scholarships</h3>
+                    <p>We provide various scholarships to economically weaker students and run multiple social initiatives to promote education in the region, especially for the girl child. The DPR Charitable Trust aims to significantly contribute to the social and economic well-being of the region by providing quality education and future skills to youth.</p>
+                </div>
+
+                <div class="about-section">
+                    <h3>📚 Academic Excellence at VITS</h3>
+                    <p><strong>VITS is known for its excellent faculty strength</strong>, which synergizes brilliantly with students. We are perfectly aware of what to deliver and believe in dynamic teaching utilizing the latest pedagogic principles. Education at VITS extends beyond the course curriculum to practical application of skills through internships, seminars, and live projects, with high exposure to corporate events.</p>
+                </div>
+
+                <div class="about-section">
+                    <h3>🏫 Our Institutions</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                        <tr style="background: #f8f9fa;">
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left; color: #333;">Institution Name</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left; color: #333;">Year Established</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left; color: #333;">Courses Offered</th>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;">Vindhya Institute of Technology & Science</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2002</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">B. Tech, M. Tech & MCA</td>
+                        </tr>
+                        <tr style="background: #f8f9fa;">
+                            <td style="border: 1px solid #ddd; padding: 12px;">Vindhya Institute of Management & Research</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2007</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">MBA</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;">Vindhya Institute of Management & Science</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2011</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">BBA, B. Com, B.Sc & BCA</td>
+                        </tr>
+                        <tr style="background: #f8f9fa;">
+                            <td style="border: 1px solid #ddd; padding: 12px;">The VITS Polytechnic</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2011</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">Engineering Diploma</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;">VITS College of Education</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2016</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">B. Ed</td>
+                        </tr>
+                        <tr style="background: #f8f9fa;">
+                            <td style="border: 1px solid #ddd; padding: 12px;">The VITS School</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2016</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">Pre-Primary to Class XII</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;">Vindhya College of Pharmacy</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2024</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">B.Pharmacy, D.Pharmacy</td>
+                        </tr>
+                        <tr style="background: #f8f9fa;">
+                            <td style="border: 1px solid #ddd; padding: 12px;">Vindhya College of Law</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2025</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">BA LLB, LLB</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- FACILITIES TAB -->
+        <section id="facilities-tab" class="tab-content">
+            <div class="facilities-header">
+                <h2>Campus Facilities</h2>
+            </div>
+
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Modern Library</h3>
+                    <p>Comprehensive collection of books, journals, and digital resources for academic excellence</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>Advanced Laboratories</h3>
+                    <p>State-of-the-art labs for CSE, ECE, Mechanical, Civil Engineering and more</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Hostel Facilities</h3>
+                    <p>Comfortable accommodation for boys and girls with modern amenities</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Canteen & Food Court</h3>
+                    <p>Hygienic and affordable food with diverse menu options</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>Sports Complex</h3>
+                    <p>Well-equipped gymnasium and sports facilities for indoor and outdoor activities</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-hospital"></i>
+                    <h3>Medical Center</h3>
+                    <p>24/7 health and medical services with qualified medical staff</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Wi-Fi Campus</h3>
+                    <p>High-speed internet connectivity throughout the campus</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-bus"></i>
+                    <h3>Transportation</h3>
+                    <p>Reliable bus services connecting the campus to the city center</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT TAB -->
+        <section id="contact-tab" class="tab-content">
+            <div class="contact-header">
+                <h2>Contact Information</h2>
+                <p>Get in touch with us for admissions, placements, or any queries</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>📞 Contact Details</h3>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>VITS GROUP OF INSTITUTIONS</p>
+                            <p>Karhi Road, Amoudha, Satna</p>
+                            <p>Madhya Pradesh 485002</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91-8966 903 524</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contactsatna@vitsdpr.ac.in</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h4>Website</h4>
+                            <p><a href="http://vitsdpr.ac.in/" target="_blank" style="color: #ffc0cb; text-decoration: none;">http://vitsdpr.ac.in/</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <h3>📧 Send us a Message</h3>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">-- Select Subject --</option>
+                                <option value="admission">Admission Inquiry</option>
+                                <option value="placement">Placement Query</option>
+                                <option value="general">General Information</option>
+                                <option value="scholarship">Scholarship Information</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <h3>Follow Us On Social Media</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About VITS</h4>
+                <p>Vindhya Institute of Technology and Science - Providing excellence in technical education since its inception</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#navigation">Navigator</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p>Email: info@vits.edu.in</p>
+                <p>Phone: +91-XXXX-XXXXXX</p>
+                <p>Satna, Madhya Pradesh</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Vindhya Institute of Technology and Science, Satna. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Show selected tab
+            const selectedTab = document.getElementById(tabName + '-tab');
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            // Add active class to clicked nav link
+            event.target.classList.add('active');
+        }
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
