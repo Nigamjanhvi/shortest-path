@@ -80,13 +80,15 @@ body {
 
 /* Hero Header */
 .hero-header {
-    background: url('vitsfull.jpg') center/cover no-repeat fixed;
+    background: url("https://www.vitsdpr.ac.in/images/slider/vitsfull.jpg")
+                center/cover no-repeat fixed;
     color: white;
-    padding: 80px 20px;
+    padding: 100px 20px;
     text-align: center;
     position: relative;
     overflow: hidden;
 }
+
 
 .hero-header::before {
     display: none;
@@ -970,3 +972,4 @@ body {
         gap: 20px;
     }
 }
+
